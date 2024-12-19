@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row m-3">
+        <div class="col d-flex ">
+            <h3><i class="fa-solid fa-user"></i> View Contact</h3>
+        </div>
+        <p style="text-align: justify;" class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, earum excepturi laboriosam harum pariatur eaque consectetur! Fuga consequuntur, ullam commodi ea, perspiciatis odit veniam ducimus architecto voluptas suscipit reiciendis dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias est sed odio a sunt? Quas incidunt, atque saepe, ut eligendi laudantium voluptatibus deleniti enim hic sit ex, modi illum repellendus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit magnam, blanditiis et maiores doloribus incidunt natus saepe. Ducimus corrupti molestiae explicabo doloremque. Facere impedit sed recusandae numquam? Dolorem, aperiam consectetur.</p>
+    </div>
+    
+</div>
+<div class="container d-flex justify-content-center mt-2 mb-3" >
+    <div class="card" style="width: 30rem;">
+        <div class="text-center  ">
+        <img [src]="contacts.photo" class="w-50 " alt="user-image">   
+        </div>
+                     <div class="card-body">
+          <h5 class="card-title text-center">{{contacts.name}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><i class="fa-solid fa-id-badge"></i> Contact Id: {{contacts.id}}</li>
+          <li class="list-group-item"><i class="fa-solid fa-mobile"></i> Mobile:{{contacts.mobile}}</li>
+          <li class="list-group-item"><i class="fa-solid fa-envelope"></i> Email:{{contacts.email}}</li>
+          <li class="list-group-item"><i class="fa-solid fa-briefcase"></i> Company:{{contacts.company}}</li>
+          <li class="list-group-item"><i class="fa-solid fa-user-tie"></i> Title: {{contacts.title}}</li>
+          <li class="list-group-item"><i class="fa-solid fa-layer-group"></i> Group:{{group}}</li>
+
+
+        </ul>
+        
+      </div>
+</div>

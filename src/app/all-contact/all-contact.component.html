@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row m-3">
+        <div class="col d-flex ">
+            <h3>All Contacts</h3>
+            <a routerLink="/add-contact" class="btn btn-dark ms-5"><i class="fa-solid fa-user-plus"></i> Add New</a>
+        </div>
+        <p style="text-align: justify;" class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, earum excepturi laboriosam harum pariatur eaque consectetur! Fuga consequuntur, ullam commodi ea, perspiciatis odit veniam ducimus architecto voluptas suscipit reiciendis dolor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias est sed odio a sunt? Quas incidunt, atque saepe, ut eligendi laudantium voluptatibus deleniti enim hic sit ex, modi illum repellendus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit magnam, blanditiis et maiores doloribus incidunt natus saepe. Ducimus corrupti molestiae explicabo doloremque. Facere impedit sed recusandae numquam? Dolorem, aperiam consectetur.</p>
+    </div>
+    <div class="row m-3">
+        <div class="col-lg-2 fw-bold">
+            Search Contact :
+        </div>
+        <!--  -->
+        <div class="col-lg-6">
+            <input [(ngModel)]="searchKey"  type="text" class="form-control me-auto" placeholder="Type Contact Name Here">
+        </div>
+        <div class="col-lg-6 mt-5 text-center container" *ngIf="(allContacts | filter :searchKey :'name').length==0 && !isLoading" >
+            <p class="text-danger">sorry no result found!</p>
+            <p>Please check the spelling or search for someone else</p>
+        </div>
+    </div>
+</div>
+<!-- loading spinner -->
+ <div class="container text-center mt-5" *ngIf="isLoading && allContacts.length==0">
+    <div class="spinner-border text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+ </div>
+ <!-- error message -->
+ <div class="alert alert-danger container" role="alert" *ngIf="errorMsg">
+    {{errorMsg}}
+  </div>
+<!-- contact card design -->
+ <div class="container mt-5">
+    <div class="row" *ngIf="!isLoading && allContacts.length>0">
+        <div class="col-lg-6 mb-3" *ngFor="let contact of allContacts | filter : searchKey :'name'">
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <!-- image -->
+            <div class="col-md-3 d-flex justify-content-center">
+<img [src]="contact.photo" class="w-50" alt="user-image">
+            </div>
+            <!-- content -->
+            <div class="col-md-8">
+                <!-- list items -->
+                 <ul class="list-group">
+                    <li class="list-group-item">
+                        Name: <span class="fw-bold">{{contact.name}}</span>
+                    </li>
+                    
+                    <li class="list-group-item">
+                        Mobile: <span class="fw-bold">
+                    {{contact.mobile}}
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+E mail: <span class="fw-bold">{{contact.email}}</span>
+                    </li>
+                 </ul>
+
+            </div>
+            <!-- actions -->
+            <div class="col-md-1 mt-sm-2 mt-md-0 d-flex justify-content-center flex-lg-column align-items-center">
+                <!-- VIEW -->
+                 <a routerLink="view-contact/{{contact.id}}" class="btn btn-warning text-light mb-1 "><i class="fa-solid fa-eye "></i></a>
+                 <a routerLink="edit-contact/{{contact.id}}" class="btn btn-success text-light mb-1 ms-sm-2 ms-lg-0"><i class="fa-solid fa-pen "></i></a>
+                 <button (click)="deleteContact(contact.id)" class="btn btn-danger text-light mb-1 ms-sm-2 ms-lg-0"><i class="fa-solid fa-trash "></i></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <div class="col-lg-6 m-3">
+
+        </div>
+    </div>
+
+ </div>
